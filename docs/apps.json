@@ -1,7 +1,7 @@
 {
   "siteTitle": "私人分发平台",
   "publicUrl": "https://xiaoli55979.github.io/my_ipa_server",
-  "generatedAt": "2026-04-22T14:40:01.328Z",
+  "generatedAt": "2026-04-22T14:56:33.234Z",
   "apps": [
     {
       "id": "com.autofeed.auto-feed-app",
@@ -10,12 +10,12 @@
       "ios": [
         {
           "version": "1.0.0",
-          "uploadedAt": "2026-04-22T14:27:20Z",
+          "uploadedAt": "2026-04-22T14:55:36Z",
           "tag": "1.0.0",
           "releaseName": "1.0.0",
           "notes": "add",
           "file": "upload_test.ipa",
-          "size": 10783035,
+          "size": 10786671,
           "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.0/upload_test.ipa",
           "manifestUrl": "https://xiaoli55979.github.io/my_ipa_server/manifest/com.autofeed.auto-feed-app-1.0.0.plist",
           "installUrl": "itms-services://?action=download-manifest&url=https%3A%2F%2Fxiaoli55979.github.io%2Fmy_ipa_server%2Fmanifest%2Fcom.autofeed.auto-feed-app-1.0.0.plist"
@@ -24,7 +24,7 @@
       "android": [],
       "mac": [],
       "win": [],
-      "latestAt": "2026-04-22T14:27:20Z"
+      "latestAt": "2026-04-22T14:55:36Z"
     },
     {
       "id": "com.autofeed.auto_feed_app",

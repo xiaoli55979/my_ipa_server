@@ -1,7 +1,7 @@
 {
   "siteTitle": "私人分发平台",
   "publicUrl": "https://xiaoli55979.github.io/my_ipa_server",
-  "generatedAt": "2026-04-22T14:19:05.633Z",
+  "generatedAt": "2026-04-22T14:27:20.048Z",
   "apps": [
     {
       "id": "com.autofeed.auto_feed_app",
@@ -23,29 +23,6 @@
       "mac": [],
       "win": [],
       "latestAt": "2026-04-22T14:17:37Z"
-    },
-    {
-      "id": "com.autofeed.cn",
-      "name": "三维智控",
-      "icon": "https://xiaoli55979.github.io/my_ipa_server/icons/com.autofeed.cn-ios.png",
-      "ios": [
-        {
-          "version": "1.0.0",
-          "uploadedAt": "2026-04-22T14:17:04Z",
-          "tag": "1.0.0",
-          "releaseName": "1.0.0",
-          "notes": "add",
-          "file": "upload_test.ipa",
-          "size": 10782279,
-          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.0/upload_test.ipa",
-          "manifestUrl": "https://xiaoli55979.github.io/my_ipa_server/manifest/com.autofeed.cn-1.0.0.plist",
-          "installUrl": "itms-services://?action=download-manifest&url=https%3A%2F%2Fxiaoli55979.github.io%2Fmy_ipa_server%2Fmanifest%2Fcom.autofeed.cn-1.0.0.plist"
-        }
-      ],
-      "android": [],
-      "mac": [],
-      "win": [],
-      "latestAt": "2026-04-22T14:17:04Z"
     }
   ]
 }

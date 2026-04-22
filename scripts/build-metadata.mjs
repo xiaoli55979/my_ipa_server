@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
@@ -33,6 +34,115 @@ function escapeXml(s) {
   ));
 }
 function slugify(s) { return String(s).replace(/[^a-zA-Z0-9._-]/g, '_'); }
+
+// Xcode 把 IPA 里的 PNG 改成 Apple 私有 CgBI 格式(BGRA + 预乘 alpha + 裸 deflate),浏览器不认,转回标准 PNG
+const CRC_TABLE = (() => {
+  const t = new Uint32Array(256);
+  for (let i = 0; i < 256; i++) {
+    let c = i;
+    for (let k = 0; k < 8; k++) c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+    t[i] = c >>> 0;
+  }
+  return t;
+})();
+function crc32(buf) {
+  let c = 0xffffffff;
+  for (let i = 0; i < buf.length; i++) c = CRC_TABLE[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
+  return (c ^ 0xffffffff) >>> 0;
+}
+function makeChunk(type, data) {
+  const typeBuf = Buffer.from(type, 'ascii');
+  const lenBuf = Buffer.alloc(4); lenBuf.writeUInt32BE(data.length, 0);
+  const crcBuf = Buffer.alloc(4); crcBuf.writeUInt32BE(crc32(Buffer.concat([typeBuf, data])), 0);
+  return Buffer.concat([lenBuf, typeBuf, data, crcBuf]);
+}
+function normalizePng(buf) {
+  if (!buf || buf.length < 8 || buf.readUInt32BE(0) !== 0x89504e47) return buf;
+  let offset = 8, isCgBI = false, ihdr = null;
+  const idats = [], chunks = [];
+  while (offset < buf.length) {
+    const length = buf.readUInt32BE(offset);
+    const type = buf.slice(offset + 4, offset + 8).toString('ascii');
+    const data = buf.slice(offset + 8, offset + 8 + length);
+    if (type === 'CgBI') isCgBI = true;
+    else if (type === 'IDAT') idats.push(data);
+    else if (type === 'IEND') { offset += 12 + length; break; }
+    else { if (type === 'IHDR') ihdr = data; chunks.push({ type, data }); }
+    offset += 12 + length;
+  }
+  if (!isCgBI || !ihdr) return buf;
+  const width = ihdr.readUInt32BE(0);
+  const height = ihdr.readUInt32BE(4);
+  const bitDepth = ihdr[8];
+  const colorType = ihdr[9];
+  if (bitDepth !== 8 || (colorType !== 6 && colorType !== 2)) return buf;
+  const channels = colorType === 6 ? 4 : 3;
+
+  let raw;
+  try { raw = zlib.inflateRawSync(Buffer.concat(idats)); }
+  catch {
+    try { raw = zlib.inflateSync(Buffer.concat(idats)); }
+    catch { return buf; }
+  }
+
+  const rowBytes = width * channels;
+  const unfiltered = Buffer.alloc(height * rowBytes);
+  let src = 0;
+  for (let y = 0; y < height; y++) {
+    const ft = raw[src++];
+    const dstOff = y * rowBytes;
+    const prevOff = (y - 1) * rowBytes;
+    for (let i = 0; i < rowBytes; i++) {
+      const a = i >= channels ? unfiltered[dstOff + i - channels] : 0;
+      const b = y > 0 ? unfiltered[prevOff + i] : 0;
+      const c = (y > 0 && i >= channels) ? unfiltered[prevOff + i - channels] : 0;
+      let r;
+      switch (ft) {
+        case 0: r = raw[src + i]; break;
+        case 1: r = (raw[src + i] + a) & 0xff; break;
+        case 2: r = (raw[src + i] + b) & 0xff; break;
+        case 3: r = (raw[src + i] + ((a + b) >> 1)) & 0xff; break;
+        case 4: {
+          const p = a + b - c;
+          const pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
+          const pr = (pa <= pb && pa <= pc) ? a : (pb <= pc) ? b : c;
+          r = (raw[src + i] + pr) & 0xff;
+          break;
+        }
+        default: return buf;
+      }
+      unfiltered[dstOff + i] = r;
+    }
+    src += rowBytes;
+  }
+
+  for (let i = 0; i < unfiltered.length; i += channels) {
+    const t = unfiltered[i];
+    unfiltered[i] = unfiltered[i + 2];
+    unfiltered[i + 2] = t;
+    if (channels === 4) {
+      const a = unfiltered[i + 3];
+      if (a > 0 && a < 255) {
+        unfiltered[i]     = Math.min(255, Math.round(unfiltered[i]     * 255 / a));
+        unfiltered[i + 1] = Math.min(255, Math.round(unfiltered[i + 1] * 255 / a));
+        unfiltered[i + 2] = Math.min(255, Math.round(unfiltered[i + 2] * 255 / a));
+      }
+    }
+  }
+
+  const filtered = Buffer.alloc(height * (1 + rowBytes));
+  for (let y = 0; y < height; y++) {
+    filtered[y * (1 + rowBytes)] = 0;
+    unfiltered.copy(filtered, y * (1 + rowBytes) + 1, y * rowBytes, (y + 1) * rowBytes);
+  }
+  const recompressed = zlib.deflateSync(filtered);
+
+  const parts = [buf.slice(0, 8)];
+  for (const ch of chunks) parts.push(makeChunk(ch.type, ch.data));
+  parts.push(makeChunk('IDAT', recompressed));
+  parts.push(makeChunk('IEND', Buffer.alloc(0)));
+  return Buffer.concat(parts);
+}
 
 function fetchReleases() {
   const out = sh('gh', ['api', '--paginate', `/repos/${REPO}/releases?per_page=100`]);
@@ -78,7 +188,7 @@ function parseIpa(filePath) {
     });
     if (candidates.length) {
       candidates.sort((a, b) => b.header.size - a.header.size);
-      iconData = candidates[0].getData();
+      iconData = normalizePng(candidates[0].getData());
     }
   }
   return { bundleId, version, name, iconData };

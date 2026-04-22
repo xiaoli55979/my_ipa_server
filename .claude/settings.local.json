@@ -39,7 +39,18 @@
       "Bash(node --check docs/assets/app.js)",
       "Bash(npm i *)",
       "Bash(npm uninstall *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(gh run *)",
+      "Read(//tmp/**)",
+      "Bash(xxd /tmp/ios_icon.png)",
+      "Bash(python3 -c \"import sys, json; [print\\(r['conclusion'] or r['status'], '|', r['name'], '|', r['event'], '|', r['displayTitle'][:60], '|', r['createdAt'], '|', r['headSha'][:7]\\) for r in json.load\\(sys.stdin\\)]\")",
+      "Bash(xxd docs/icons/com.autofeed.cn-ios.png)",
+      "Bash(xxd docs/icons/com.autofeed.auto_feed_app-android.png)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(gh auth *)",
+      "Bash(file *)",
+      "Bash(python3 -c \"import sys, json; d = json.load\\(sys.stdin\\); [print\\(a['id'], '|', a['name'], '|', 'icon:', bool\\(a['icon']\\)\\) for a in d['apps']]\")",
+      "Bash(sips -g all docs/icons/com.autofeed.auto-feed-app-ios.png)"
     ]
   }
 }

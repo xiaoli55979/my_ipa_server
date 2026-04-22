@@ -6,13 +6,10 @@
       "Bash(npm install *)",
       "Bash(npm view *)",
       "Bash(npm run *)",
-      "Bash(curl -sI https://xiaoli55979.github.io/ipa_install/)",
-      "Bash(curl -sI https://xiaoli55979.github.io/ipa_install/apps.json)",
       "Bash(curl *)",
       "Bash(npm -v)",
       "Bash(git check-ignore *)",
       "Bash(git config *)",
-      "Bash(git -C /Users/ahao/Documents/Workspace/ipa_install_project check-ignore -v package-lock.json)",
       "Bash(git add *)",
       "Bash(git fetch *)",
       "Bash(find /Users/ahao/.pub-cache/hosted/pub.dev/bugly_pro_flutter* -name \"CMakeLists.txt\" -o -name \"build.gradle\")",
@@ -42,14 +39,7 @@
       "Bash(node --check docs/assets/app.js)",
       "Bash(npm i *)",
       "Bash(npm uninstall *)",
-      "Bash(node --check /Users/ahao/Documents/Workspace/ipa_install_project/docs/assets/app.js)",
-      "Bash(git -C /Users/ahao/Documents/Workspace/ipa_install_project status --short)",
-      "Bash(git -C /Users/ahao/Documents/Workspace/ipa_install_project log --oneline -5)",
-      "Bash(git -C /Users/ahao/Documents/Workspace/ipa_install_project diff --stat)",
-      "Bash(git *)",
-      "Bash(chmod +x /Users/ahao/Documents/Workspace/ipa_install_project/scripts/new-dist-repo.sh)",
-      "Bash(bash -n /Users/ahao/Documents/Workspace/ipa_install_project/scripts/new-dist-repo.sh)",
-      "Bash(/Users/ahao/Documents/Workspace/ipa_install_project/scripts/new-dist-repo.sh)"
+      "Bash(git *)"
     ]
   }
 }

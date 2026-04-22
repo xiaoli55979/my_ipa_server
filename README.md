@@ -1,10 +1,10 @@
-# ipa_install
+# my_ipa_server
 
 基于 GitHub Pages 的自助 iOS / Android / Mac / Windows 分发页。上传走 **GitHub Releases**，绕开 Git 的 100MB 文件限制，单文件可达 2GB。
 
 ## 地址
 
-- 分发页：https://xiaoli55979.github.io/ipa_install/
+- 分发页：https://xiaoli55979.github.io/my_ipa_server/
 - iOS 安装链接：`itms-services://...`（脚本自动生成，指向 Release 资产）
 
 ## 架构原理
@@ -115,7 +115,7 @@
 
 ## 一次性初始化（在 GitHub 上做一遍）
 
-1. 推送代码到 `https://github.com/xiaoli55979/ipa_install.git` 的 `main` 分支
+1. 推送代码到 `https://github.com/xiaoli55979/my_ipa_server.git` 的 `main` 分支
 2. **Settings → Pages**：Source 选 `Deploy from a branch`，Branch 选 `main`，目录 `/docs`，Save
 3. **Settings → Actions → General → Workflow permissions**：勾选 **Read and write permissions**，Save
 

@@ -1,13 +1,25 @@
 {
   "siteTitle": "私人分发平台",
   "publicUrl": "https://xiaoli55979.github.io/my_ipa_server",
-  "generatedAt": "2026-04-23T04:52:00.197Z",
+  "generatedAt": "2026-04-23T05:28:37.123Z",
   "apps": [
     {
       "id": "com.autofeed.app",
       "name": "三维智控",
       "icon": "https://xiaoli55979.github.io/my_ipa_server/icons/com.autofeed.app-android.png",
       "ios": [
+        {
+          "version": "1.0.7",
+          "uploadedAt": "2026-04-23T05:28:19Z",
+          "tag": "1.0.7",
+          "releaseName": "1.0.7",
+          "notes": "iOS test: `autofeed_1.0.7_test.ipa`\nAndroid: `autofeed_1.0.7.apk`\n2026-04-23 14:28:13 JST",
+          "file": "autofeed_1.0.7_test.ipa",
+          "size": 10965727,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.7/autofeed_1.0.7_test.ipa",
+          "manifestUrl": "https://xiaoli55979.github.io/my_ipa_server/manifest/com.autofeed.app-1.0.7.plist",
+          "installUrl": "itms-services://?action=download-manifest&url=https%3A%2F%2Fxiaoli55979.github.io%2Fmy_ipa_server%2Fmanifest%2Fcom.autofeed.app-1.0.7.plist"
+        },
         {
           "version": "1.0.6",
           "uploadedAt": "2026-04-23T04:51:15Z",
@@ -59,6 +71,16 @@
       ],
       "android": [
         {
+          "version": "1.0.7",
+          "uploadedAt": "2026-04-23T05:28:22Z",
+          "tag": "1.0.7",
+          "releaseName": "1.0.7",
+          "notes": "iOS test: `autofeed_1.0.7_test.ipa`\nAndroid: `autofeed_1.0.7.apk`\n2026-04-23 14:28:13 JST",
+          "file": "autofeed_1.0.7.apk",
+          "size": 43294490,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.7/autofeed_1.0.7.apk"
+        },
+        {
           "version": "1.0.6",
           "uploadedAt": "2026-04-23T04:51:19Z",
           "tag": "1.0.6",
@@ -91,7 +113,7 @@
       ],
       "mac": [],
       "win": [],
-      "latestAt": "2026-04-23T04:51:19Z"
+      "latestAt": "2026-04-23T05:28:22Z"
     }
   ]
 }

@@ -1,13 +1,25 @@
 {
   "siteTitle": "私人分发平台",
   "publicUrl": "https://xiaoli55979.github.io/my_ipa_server",
-  "generatedAt": "2026-04-24T07:01:04.833Z",
+  "generatedAt": "2026-04-24T07:15:47.792Z",
   "apps": [
     {
       "id": "com.autofeed.app",
       "name": "三维智控",
       "icon": "https://xiaoli55979.github.io/my_ipa_server/icons/com.autofeed.app-android.png",
       "ios": [
+        {
+          "version": "1.0.14",
+          "uploadedAt": "2026-04-24T07:15:03Z",
+          "tag": "1.0.14",
+          "releaseName": "1.0.14",
+          "notes": "iOS test: `autofeed_1.0.14_test.ipa`\nAndroid: `autofeed_1.0.14.apk`\n2026-04-24 16:14:43 JST",
+          "file": "autofeed_1.0.14_test.ipa",
+          "size": 10977855,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.14/autofeed_1.0.14_test.ipa",
+          "manifestUrl": "https://xiaoli55979.github.io/my_ipa_server/manifest/com.autofeed.app-1.0.14.plist",
+          "installUrl": "itms-services://?action=download-manifest&url=https%3A%2F%2Fxiaoli55979.github.io%2Fmy_ipa_server%2Fmanifest%2Fcom.autofeed.app-1.0.14.plist"
+        },
         {
           "version": "1.0.13",
           "uploadedAt": "2026-04-24T07:00:03Z",
@@ -143,6 +155,16 @@
       ],
       "android": [
         {
+          "version": "1.0.14",
+          "uploadedAt": "2026-04-24T07:15:21Z",
+          "tag": "1.0.14",
+          "releaseName": "1.0.14",
+          "notes": "iOS test: `autofeed_1.0.14_test.ipa`\nAndroid: `autofeed_1.0.14.apk`\n2026-04-24 16:14:43 JST",
+          "file": "autofeed_1.0.14.apk",
+          "size": 43343898,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.14/autofeed_1.0.14.apk"
+        },
+        {
           "version": "1.0.13",
           "uploadedAt": "2026-04-24T07:00:20Z",
           "tag": "1.0.13",
@@ -245,7 +267,7 @@
       ],
       "mac": [],
       "win": [],
-      "latestAt": "2026-04-24T07:00:20Z"
+      "latestAt": "2026-04-24T07:15:21Z"
     }
   ]
 }

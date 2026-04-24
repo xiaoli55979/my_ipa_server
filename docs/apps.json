@@ -1,13 +1,25 @@
 {
   "siteTitle": "私人分发平台",
   "publicUrl": "https://xiaoli55979.github.io/my_ipa_server",
-  "generatedAt": "2026-04-24T02:59:28.766Z",
+  "generatedAt": "2026-04-24T06:31:18.978Z",
   "apps": [
     {
       "id": "com.autofeed.app",
       "name": "三维智控",
       "icon": "https://xiaoli55979.github.io/my_ipa_server/icons/com.autofeed.app-android.png",
       "ios": [
+        {
+          "version": "1.0.11",
+          "uploadedAt": "2026-04-24T06:30:38Z",
+          "tag": "1.0.11",
+          "releaseName": "1.0.11",
+          "notes": "## 本版更新\n\n### 运行日志体验\n- 每条日志按**设备**归属,多设备时顶部出现筛选条可单独看某台\n- **相邻同设备日志自动合并**,只在组首显示一次设备名,OTA hop 等爆发场景大幅减行\n- 滚到中间/下面查看时**冻结当前视图**,新日志不再挤乱正在看的内容\n- 冻结期间顶部胶囊 `↑ N 条新日志`,**点击跳回顶部**一次性刷入\n- tag + 时间左对齐紧凑布局,长内容换行也对齐\n\n### GitHub 固件检测\n- 进远程设置页**后台静默自检**,不再主动弹升级提示\n- 发现新版 tile **红色标记**提醒\n- 升级需要 sheet 内点击 + 二次确认对话框,**不允许 APP 自动升级**\n- 不在 UI 中暴露默认仓库信息\n\n### 构建\n- 本地 debug 包名改为 `com.autofeed.app.dev` (iOS / Android),不再覆盖 GitHub 分发的测试包\n\n> 搭配固件 fw-1.13.9+ 使用;该版本修了 mDNS 跑久了局域网搜不到的问题\n\n---\n\niOS test: `autofeed_1.0.11_test.ipa`\nAndroid: `autofeed_1.0.11.apk`\n2026-04-24 15:30:18 JST",
+          "file": "autofeed_1.0.11_test.ipa",
+          "size": 10977484,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.11/autofeed_1.0.11_test.ipa",
+          "manifestUrl": "https://xiaoli55979.github.io/my_ipa_server/manifest/com.autofeed.app-1.0.11.plist",
+          "installUrl": "itms-services://?action=download-manifest&url=https%3A%2F%2Fxiaoli55979.github.io%2Fmy_ipa_server%2Fmanifest%2Fcom.autofeed.app-1.0.11.plist"
+        },
         {
           "version": "1.0.10",
           "uploadedAt": "2026-04-24T02:58:12Z",
@@ -107,6 +119,16 @@
       ],
       "android": [
         {
+          "version": "1.0.11",
+          "uploadedAt": "2026-04-24T06:30:55Z",
+          "tag": "1.0.11",
+          "releaseName": "1.0.11",
+          "notes": "## 本版更新\n\n### 运行日志体验\n- 每条日志按**设备**归属,多设备时顶部出现筛选条可单独看某台\n- **相邻同设备日志自动合并**,只在组首显示一次设备名,OTA hop 等爆发场景大幅减行\n- 滚到中间/下面查看时**冻结当前视图**,新日志不再挤乱正在看的内容\n- 冻结期间顶部胶囊 `↑ N 条新日志`,**点击跳回顶部**一次性刷入\n- tag + 时间左对齐紧凑布局,长内容换行也对齐\n\n### GitHub 固件检测\n- 进远程设置页**后台静默自检**,不再主动弹升级提示\n- 发现新版 tile **红色标记**提醒\n- 升级需要 sheet 内点击 + 二次确认对话框,**不允许 APP 自动升级**\n- 不在 UI 中暴露默认仓库信息\n\n### 构建\n- 本地 debug 包名改为 `com.autofeed.app.dev` (iOS / Android),不再覆盖 GitHub 分发的测试包\n\n> 搭配固件 fw-1.13.9+ 使用;该版本修了 mDNS 跑久了局域网搜不到的问题\n\n---\n\niOS test: `autofeed_1.0.11_test.ipa`\nAndroid: `autofeed_1.0.11.apk`\n2026-04-24 15:30:18 JST",
+          "file": "autofeed_1.0.11.apk",
+          "size": 43343902,
+          "downloadUrl": "https://github.com/xiaoli55979/my_ipa_server/releases/download/1.0.11/autofeed_1.0.11.apk"
+        },
+        {
           "version": "1.0.10",
           "uploadedAt": "2026-04-24T02:58:32Z",
           "tag": "1.0.10",
@@ -179,7 +201,7 @@
       ],
       "mac": [],
       "win": [],
-      "latestAt": "2026-04-24T02:58:32Z"
+      "latestAt": "2026-04-24T06:30:55Z"
     }
   ]
 }
